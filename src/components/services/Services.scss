@@ -1,0 +1,38 @@
+@import "../../App.scss";
+.services{
+    width: 100%;
+    background: #f8f8f8;
+    
+    .services-wrapper{
+        width: 100%;
+       
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .services-item{
+          
+            width: 100%;
+            max-width: 300px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            
+            .title{
+                font-size: 15px;
+                font-weight: 700;
+                color:$clr-dark;
+            }
+            .sub-title{
+                font-size: 12px;
+                color: $clr-gray;
+            }
+
+        }
+    }
+}

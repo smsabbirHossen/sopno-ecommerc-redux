@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+//react router v6
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+//pages
+import {
+  Home,
+  Cart,
+  CategoryProduct,
+  Search,
+  ProductSingle,
+} from "./pages/index";
+//components
+import { Header, Slidebar, Footer } from "./components/index";
+import store from "./store/store";
+import { Provider } from "react-redux";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Provider store={store}>
+        <BrowserRouter>
+          <Header />
+          <Slidebar />
+          <Routes>
+            {/* home page route */}
+            <Route path="/" element={<Home />}></Route>
+            {/* single product route */}
+            <Route path="/product/:id" element={<ProductSingle />}></Route>
+            {/* category wise product listing route */}
+            <Route
+              path="/category/:category"
+              element={<CategoryProduct />}
+            ></Route>
+            {/* cart */}
+            <Route path="/cart" element={<Cart />}></Route>
+            {/* srarched product */}
+            <Route path="/search/:searchTerm" element={<Search />}></Route>
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </Provider>
     </div>
   );
-}
+};
 
 export default App;
